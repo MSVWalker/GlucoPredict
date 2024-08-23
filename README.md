@@ -56,7 +56,7 @@ In this project, data cleaning and preprocessing were critical for ensuring the 
 
 In the EDA phase, we explored the dataset to understand its structure and key relationships:
 
-<img src="./5_README_files/histograms.png" alt="Histograms" width="1000"/>
+<img src="./5_README_files/histograms.png" alt="Histograms" width="800"/>
 
 * **Initial Inspection:**
   - Loaded `combined_df` and reviewed column names, data types, and sample sizes.
@@ -81,7 +81,7 @@ This analysis provided key insights into data patterns and feature relationships
 
 Feature engineering was key to improving glucose prediction. Key steps included:
 
-<img src="./5_README_files/correlations.png" alt="Correlations" width="1000"/>
+<img src="./5_README_files/correlations.png" alt="Correlations" width="700"/>
 
 * **Log Transformations:** Applied log transformations to enhance feature correlations with glucose.
 * **Time-Based Features:** Added features for time since midnight, day of month, weekend status, and elapsed time.
@@ -116,7 +116,7 @@ Models are assessed and compared based on various performance metrics:
 
 - **Model Results**:
   - Results are gathered for each model, including Mean Predictor, Linear Regression, Elastic Net, Decision Tree, Random Forest, XGBoost, SVR, and KNN, and are stored in a results dictionary for comprehensive comparison.
-<img src="./5_README_files/modelsurvey.png" alt="Modelsurvey" width="1000"/>
+<img src="./5_README_files/modelsurvey.png" alt="Modelsurvey" width="600"/>
 
 ## 7. Final Model Optimization
 
@@ -140,16 +140,64 @@ Optimized both the PLS and XGBoost models using RandomizedSearchCV with Leave-On
 - **Hyperparameter Impact**: Plots illustrate the effect of different hyperparameters on RMSE.
 - **Model Comparison**: Visualized RMSE for various models including Mean Regressor, Linear Regression, XGBoost, and PLS Regression (n=6).
 
-<img src="./5_README_files/xgbhyper.png" alt="XGBoost Hyperparameter Tuning" width="1000"/>
-<img src="./5_README_files/finalcvrmse.png" alt="Final Model RMSE Comparison" width="1000"/>
+<img src="./5_README_files/xgbhyper.png" alt="XGBoost Hyperparameter Tuning" width="600"/>
+<img src="./5_README_files/finalcvrmse.png" alt="Final Model RMSE Comparison" width="600"/>
 
 
----
+## 8. Final Model Optimization
+
+### Overview
+
+Optimized PLS and XGBoost models using RandomizedSearchCV with Leave-One-Group-Out Cross-Validation (LOGO CV) for glucose prediction.
+
+### Key Steps
+
+1. **Data**: Training on patients 2-16, excluding patient 1.
+2. **Pipeline**: Included data imputation, scaling, and regression.
+3. **Tuning**: Sampled parameters like `n_estimators`, `max_depth`, and `learning_rate`.
+
+### Results
+
+- **Best RMSE**: PLS Regression (n=6) achieved the lowest RMSE of 21.04, indicating the best performance.
+
+### Visualization
+
+#### Feature Importance
+
+![Feature Importance](./5_README_files/featureimportance.png)
+
+This plot highlights the importance of various features in the XGBoost model, showing which variables have the most impact on glucose prediction.
+
+#### Model Performance
+
+![Model Performance](./5_README_files/modelperformance.png)
+
+This graph compares the performance of different models using RMSE, illustrating how each model fares in predicting glucose levels.
+
+#### Adding More Patients
+
+![Adding More Patients](./5_README_files/addingpatients.png)
+
+The results shown here demonstrate the effect of including additional patients on model performance, reflecting improvements in prediction accuracy at first but with diminishing returns.
+
+
+## 9. Opportunities for Improvement
+
+Future enhancements for the glucose prediction system could include:
+
+1. **Expanded Dataset**: Incorporate data from a broader range of patients to enhance model generalization.
+2. **Improved Food Logs**: Ensure more accurate and consistent tracking of food intake to better correlate with glucose levels.
+3. **Incorporate Stress, Sleep, and Objective Sleep Data**: Add self-reported and wearable data on stress and sleep, including data from devices like Apple Watch for sleep schedules and O2 measurements.
+4. **Include Environmental Factors**: Consider variables such as temperature and humidity that may impact glucose levels.
+5. **Track Hydration Levels**: Monitor and incorporate hydration data into the prediction model.
+6. **Advanced Features**: Capture and analyze rapid changes in glucose levels to improve prediction accuracy.
+
+## 10. Credits
+
+Special thanks to:
+- **Shmuel Naaman** for guidance and mentorship throughout the project.
 
 
 
-<img src="./5_README_files/featureimportance.png" alt="featureimportance.png" width="1000"/>
-<img src="./5_README_files/finalcvrmse.png" alt="Final Model RMSE Comparison" width="1000"/>
-<img src="./5_README_files/xgbhyper.png" alt="XGBoost Hyperparameter Tuning" width="1000"/>
 
 
