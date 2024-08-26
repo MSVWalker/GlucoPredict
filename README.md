@@ -144,7 +144,7 @@ Optimized both the PLS and XGBoost models using RandomizedSearchCV with Leave-On
 <img src="./5_README_files/finalcvrmse.png" alt="Final Model RMSE Comparison" width="600"/>
 
 
-## 8. Final Model Optimization
+## 8. Final Model Performance
 
 ### Overview
 
